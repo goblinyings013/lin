@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="游戏UI设计师 / 技术美术 | 北京 — 个人作品集">
+<title>林影珊 — 游戏UI设计 / 技术美术</title>
+<style>
+  /* ===== Reset & Base ===== */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;font-size:16px}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+    background:#0b0b0d;
+    color:#c8c8cf;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img,video,iframe{display:block;max-width:100%;border:none}
+
+  /* ===== Typography ===== */
+  h1{font-size:clamp(2.4rem,5vw,3.6rem);font-weight:700;letter-spacing:-0.02em}
+  h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:600;letter-spacing:-0.01em}
+  h3{font-size:1.1rem;font-weight:600;color:#e8e8ef}
+  .accent{color:#d4a574}
+
+  /* ===== Layout ===== */
+  .section{padding:80px 24px;max-width:1080px;margin:0 auto}
+  .section-header{margin-bottom:48px}
+  .section-header .tag{
+    display:inline-block;
+    font-size:0.75rem;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:#d4a574;
+    border:1px solid rgba(212,165,116,.35);
+    border-radius:4px;
+    padding:4px 12px;
+    margin-bottom:16px;
+  }
+  .section-header h2{margin-bottom:8px}
+  .section-header .sub{color:#7a7a85;font-size:0.95rem}
+
+  /* ===== Header ===== */
+  .hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:80px 24px;
+    max-width:1080px;margin:0 auto;
+  }
+  .hero h1{margin-bottom:8px}
+  .hero .title{
+    font-size:1.2rem;
+    color:#d4a574;
+    margin-bottom:6px;
+  }
+  .hero .meta{
+    display:flex;flex-wrap:wrap;gap:16px;
+    font-size:0.9rem;color:#7a7a85;
+    margin-top:24px;
+  }
+  .hero .meta a{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:8px 16px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:6px;
+    transition:border-color .2s,background .2s;
+  }
+  .hero .meta a:hover{border-color:rgba(212,165,116,.4);background:rgba(212,165,116,.06)}
+  .hero .resume-btn{
+    background:rgba(212,165,116,.12);
+    border-color:rgba(212,165,116,.3);
+    color:#d4a574;
+  }
+  .scroll-hint{
+    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+    color:#4a4a55;font-size:0.75rem;
+    animation:bounce 2s infinite;
+  }
+  @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+  /* ===== UI Design Section ===== */
+  .design-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+  }
+  .design-card{
+    border-radius:10px;
+    overflow:hidden;
+    background:#141418;
+    border:1px solid rgba(255,255,255,.06);
+    transition:border-color .3s;
+  }
+  .design-card:hover{border-color:rgba(255,255,255,.12)}
+  .design-card.full{grid-column:1/-1}
+  .design-card .media{
+    aspect-ratio:16/10;
+    background:#1a1a1f;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+  }
+  .design-card .media .placeholder{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#3a3a45;
+    gap:8px;
+  }
+  .design-card .media .placeholder svg{width:48px;height:48px;opacity:.3}
+  .design-card .media img,
+  .design-card .media video,
+  .design-card .media iframe{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  }
+  .design-card .info{padding:20px}
+  .design-card .info .badge{
+    display:inline-block;
+    font-size:0.7rem;font-weight:600;
+    padding:2px 8px;border-radius:3px;
+    margin-bottom:8px;
+    background:rgba(212,165,116,.15);
+    color:#d4a574;
+  }
+  .design-card .info h3{margin-bottom:4px}
+  .design-card .info p{font-size:0.9rem;color:#7a7a85}
+  .design-card .info .tools{
+    margin-top:8px;font-size:0.78rem;color:#5a5a65;
+  }
+
+  /* ===== In-Unity highlight ===== */
+  .unity-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:0.75rem;
+    background:rgba(76,175,80,.15);
+    color:#66bb6a;
+    padding:6px 14px;
+    border-radius:20px;
+    margin-top:12px;
+  }
+  .unity-badge::before{
+    content:"";
+    width:8px;height:8px;
+    background:#66bb6a;
+    border-radius:50%;
+  }
+
+  /* ===== Video section ===== */
+  .video-wrapper{
+    aspect-ratio:16/9;
+    background:#1a1a1f;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .video-wrapper iframe{width:100%;height:100%}
+
+  .video-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+  }
+
+  /* ===== Model viewer ===== */
+  .model-wrapper{
+    aspect-ratio:16/9;
+    border-radius:10px;
+    overflow:hidden;
+    background:#1a1a1f;
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .model-wrapper iframe{width:100%;height:100%}
+
+  /* ===== Horizontal scroll gallery ===== */
+  .hscroll{
+    display:flex;gap:16px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:8px;
+    scrollbar-width:thin;
+    scrollbar-color:rgba(255,255,255,.1) transparent;
+  }
+  .hscroll::-webkit-scrollbar{height:4px}
+  .hscroll::-webkit-scrollbar-track{background:transparent}
+  .hscroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+  .hscroll-item{
+    flex:0 0 auto;
+    width:420px;
+    scroll-snap-align:start;
+    border-radius:8px;
+    overflow:hidden;
+    background:#141418;
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .hscroll-item .art-img{
+    aspect-ratio:16/10;
+    background:#1a1a1f;
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+    color:#3a3a45;
+    overflow:hidden;
+  }
+  .hscroll-item .art-img img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  }
+  .hscroll-item .art-caption{
+    padding:12px 16px;
+    font-size:0.82rem;color:#7a7a85;
+    line-height:1.5;
+  }
+  .hscroll-item .art-caption strong{color:#c8c8cf}
+  .hscroll-item .art-tags{
+    display:flex;gap:6px;flex-wrap:wrap;
+    padding:0 16px 12px;
+  }
+  .hscroll-item .art-tags span{
+    font-size:0.68rem;
+    padding:2px 8px;
+    border-radius:3px;
+    background:rgba(212,165,116,.1);
+    color:#d4a574;
+  }
+
+  /* ===== Process steps ===== */
+  .process-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+  }
+  .process-step{
+    border-radius:8px;
+    overflow:hidden;
+    background:#141418;
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .process-step .step-img{
+    aspect-ratio:4/3;
+    background:#1a1a1f;
+    display:flex;align-items:center;justify-content:center;
+    color:#3a3a45;
+    position:relative;
+    overflow:hidden;
+  }
+  .process-step .step-img img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  }
+  .process-step .step-label{
+    text-align:center;
+    padding:8px;
+    font-size:0.75rem;
+    color:#6a6a75;
+  }
+
+  /* ===== Subsection header ===== */
+  .subsec-header{
+    display:flex;align-items:baseline;gap:12px;
+    margin-bottom:16px;
+  }
+  .subsec-header h3{margin-bottom:0}
+  .subsec-header .subsec-tag{
+    font-size:0.72rem;color:#7a7a85;
+  }
+
+  /* ===== Art grid ===== */
+  .art-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  .art-item{
+    aspect-ratio:4/5;
+    border-radius:8px;
+    overflow:hidden;
+    background:#141418;
+    border:1px solid rgba(255,255,255,.06);
+    position:relative;
+  }
+  .art-item .placeholder{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    color:#4a4a55;
+    font-size:0.85rem;
+    flex-direction:column;gap:8px;
+  }
+  .art-item img{
+    position:absolute;inset:0;
+    width:100%;height:100%;object-fit:cover;
+  }
+
+  /* ===== Footer ===== */
+  .footer{
+    text-align:center;
+    padding:60px 24px;
+    border-top:1px solid rgba(255,255,255,.05);
+  }
+  .footer .contact-row{
+    display:flex;justify-content:center;gap:16px;flex-wrap:wrap;
+    margin-bottom:12px;
+  }
+  .footer .contact-row a{
+    padding:10px 20px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:6px;
+    transition:border-color .2s,background .2s;
+  }
+  .footer .contact-row a:hover{border-color:rgba(212,165,116,.4);background:rgba(212,165,116,.06)}
+  .footer .ending{color:#5a5a65;font-size:0.85rem;margin-top:24px}
+
+  /* ===== Divider ===== */
+  .divider{
+    width:60px;height:1px;
+    background:rgba(255,255,255,.1);
+    margin:0 auto;
+  }
+
+  /* ===== Compare (before/after) ===== */
+  .compare-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+  .compare-pane{
+    aspect-ratio:16/10;
+    background:#1a1a1f;
+    border-radius:6px;
+    overflow:hidden;
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .compare-pane .label{
+    position:absolute;top:10px;left:10px;
+    font-size:0.7rem;font-weight:600;
+    padding:3px 10px;
+    border-radius:3px;
+    background:rgba(0,0,0,.6);
+    color:#c8c8cf;
+    z-index:2;
+  }
+  .compare-pane .label.after{
+    background:rgba(212,165,116,.25);
+    color:#d4a574;
+  }
+  .compare-pane .placeholder{
+    color:#3a3a45;
+    font-size:0.85rem;
+  }
+  .compare-pane img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  }
+
+  /* ===== Responsive ===== */
+  @media(max-width:768px){
+    .design-grid,.video-grid,.art-grid,.compare-row,.process-row{grid-template-columns:1fr}
+    .hscroll-item{width:300px}
+    .hero h1{font-size:2rem}
+    .section{padding:48px 16px}
+    .hero{padding:48px 16px}
+    .scroll-hint{display:none}
+  }
+
+  /* ===== Scroll fade-in ===== */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .6s ease,transform .6s ease;
+  }
+  .reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<section class="hero" style="position:relative">
+  <h1>林<span class="accent">影</span>珊</h1>
+  <p class="title">游戏UI设计师 / 技术美术</p>
+  <p style="color:#6a6a75;max-width:480px;margin-top:12px">
+    从Figma到Unity，从概念到可交互界面。<br>专注于游戏UI设计与引擎落地，追求美术与工程的交界点。
+  </p>
+  <div class="meta">
+    <a href="mailto:1559322152@qq.com">✉ 1559322152@qq.com</a>
+    <a href="resume.pdf" class="resume-btn" download>↓ 下载简历 PDF</a>
+    <a href="https://space.bilibili.com/" target="_blank" rel="noopener">▶ B站主页</a>
+  </div>
+  <div class="scroll-hint">▼ 向下浏览作品</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== 1. 美术作品 ========== -->
+<section class="section reveal" id="artwork">
+  <div class="section-header">
+    <span class="tag">01 · Artwork</span>
+    <h2>美术作品</h2>
+    <p class="sub">从草图到成品，每一笔都是对造型和光影的理解</p>
+  </div>
+
+  <!-- 角色设计 -->
+  <div style="margin-bottom:48px">
+    <div class="subsec-header">
+      <h3>角色设计</h3>
+      <span class="subsec-tag">原创角色 / 同人角色</span>
+    </div>
+
+    <!-- 设计流程：草稿→上色→成品 -->
+    <div class="process-row" style="margin-bottom:20px">
+      <div class="process-step">
+        <div class="step-img">
+          <div class="placeholder"><span>设计草稿</span></div>
+        </div>
+        <div class="step-label">① 设计思路草稿</div>
+      </div>
+      <div class="process-step">
+        <div class="step-img">
+          <div class="placeholder"><span>上色过程</span></div>
+        </div>
+        <div class="step-label">② 铺色 & 明暗</div>
+      </div>
+      <div class="process-step">
+        <div class="step-img">
+          <div class="placeholder"><span>最终成品</span></div>
+        </div>
+        <div class="step-label">③ 最终成品</div>
+      </div>
+    </div>
+
+    <!-- 角色设计横向滚动画廊 -->
+    <div class="hscroll">
+      <div class="hscroll-item">
+        <div class="art-img"><div class="placeholder"><span>角色作品 1</span></div></div>
+        <div class="art-caption">
+          <strong>原创角色 · 星轨旅人</strong><br>灵感来源：赛博朋克+东方元素<br>工具：Procreate · Photoshop
+        </div>
+        <div class="art-tags"><span>角色设计</span><span>板绘</span><span>原创</span></div>
+      </div>
+      <div class="hscroll-item">
+        <div class="art-img"><div class="placeholder"><span>角色作品 2</span></div></div>
+        <div class="art-caption">
+          <strong>同人角色 · 恋与深空</strong><br>灵感来源：官方角色再创作<br>工具：Procreate
+        </div>
+        <div class="art-tags"><span>角色设计</span><span>板绘</span><span>同人</span></div>
+      </div>
+      <div class="hscroll-item">
+        <div class="art-img"><div class="placeholder"><span>角色作品 3</span></div></div>
+        <div class="art-caption">
+          <strong>原创角色 · 山海异兽录</strong><br>灵感来源：中国神话<br>工具：Photoshop · Sai
+        </div>
+        <div class="art-tags"><span>角色设计</span><span>板绘</span><span>原创</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 场景设计 -->
+  <div style="margin-bottom:48px">
+    <div class="subsec-header">
+      <h3>场景设计</h3>
+      <span class="subsec-tag">氛围图 / 概念稿</span>
+    </div>
+    <div class="hscroll">
+      <div class="hscroll-item">
+        <div class="art-img"><div class="placeholder"><span>场景作品 1</span></div></div>
+        <div class="art-caption">
+          <strong>场景氛围图 · 废弃都市</strong><br>灵感来源：后启示录风格探索<br>工具：Photoshop
+        </div>
+        <div class="art-tags"><span>场景设计</span><span>概念图</span></div>
+      </div>
+      <div class="hscroll-item">
+        <div class="art-img"><div class="placeholder"><span>场景作品 2</span></div></div>
+        <div class="art-caption">
+          <strong>场景概念稿 · 秘境森林</strong><br>灵感来源：幻想题材世界观<br>工具：Photoshop · Blender辅助
+        </div>
+        <div class="art-tags"><span>场景设计</span><span>概念稿</span></div>
+      </div>
+      <div class="hscroll-item">
+        <div class="art-img"><div class="placeholder"><span>场景作品 3</span></div></div>
+        <div class="art-caption">
+          <strong>场景速写 · 古城街道</strong><br>灵感来源：写生+想象力混合<br>工具：Procreate
+        </div>
+        <div class="art-tags"><span>场景设计</span><span>速写</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 插画作品 -->
+  <div>
+    <div class="subsec-header">
+      <h3>插画作品</h3>
+      <span class="subsec-tag">商业插画 / 同人创作</span>
+    </div>
+    <div class="hscroll">
+      <div class="hscroll-item">
+        <div class="art-img"><div class="placeholder"><span>插画作品 1</span></div></div>
+        <div class="art-caption">
+          <strong>商业插画 · 品牌合作</strong><br>灵感来源：客户需求+二次元风格<br>工具：Photoshop · Sai
+        </div>
+        <div class="art-tags"><span>商业插画</span></div>
+      </div>
+      <div class="hscroll-item">
+        <div class="art-img"><div class="placeholder"><span>插画作品 2</span></div></div>
+        <div class="art-caption">
+          <strong>同人创作 · 明日方舟</strong><br>灵感来源：游戏角色二创<br>工具：Procreate
+        </div>
+        <div class="art-tags"><span>同人创作</span></div>
+      </div>
+      <div class="hscroll-item">
+        <div class="art-img"><div class="placeholder"><span>插画作品 3</span></div></div>
+        <div class="art-caption">
+          <strong>商业插画 · 游戏宣传图</strong><br>灵感来源：项目需求+视觉冲击力<br>工具：Photoshop · Illustrator
+        </div>
+        <div class="art-tags"><span>商业插画</span></div>
+      </div>
+      <div class="hscroll-item">
+        <div class="art-img"><div class="placeholder"><span>插画作品 4</span></div></div>
+        <div class="art-caption">
+          <strong>同人创作 · 原神</strong><br>灵感来源：角色喜爱+氛围表达<br>工具：Procreate · Sai
+        </div>
+        <div class="art-tags"><span>同人创作</span></div>
+      </div>
+      <div class="hscroll-item">
+        <div class="art-img"><div class="placeholder"><span>插画作品 5</span></div></div>
+        <div class="art-caption">
+          <strong>参赛作品 · 插画比赛</strong><br>灵感来源：主题命题创作<br>工具：Photoshop
+        </div>
+        <div class="art-tags"><span>商业插画</span><span>参赛</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== 2. UI设计作品 ========== -->
+<section class="section reveal" id="ui-design">
+  <div class="section-header">
+    <span class="tag">02 · UI Design</span>
+    <h2>UI 设计作品</h2>
+    <p class="sub">从界面设计到引擎落地，每一个像素都为交互而生</p>
+  </div>
+
+  <div class="design-grid">
+
+    <!-- 主打：实习项目 -->
+    <div class="design-card full">
+      <div class="media" style="aspect-ratio:21/9">
+        <div class="placeholder">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="4" y="8" width="40" height="32" rx="3"/>
+            <path d="M4 16h40M16 28l6 6 10-10"/>
+          </svg>
+          <span>实习项目完整界面设计稿</span>
+        </div>
+      </div>
+      <div class="info">
+        <span class="badge">实习项目</span>
+        <h3>游戏主界面 & 功能模块设计</h3>
+        <p>完整负责主界面、活动入口、商城等核心模块的UI/UX设计，从需求分析到高保真原型交付。</p>
+        <p class="tools">工具：Figma · Photoshop · Illustrator</p>
+        <span class="unity-badge">在Unity中可落地实现</span>
+      </div>
+    </div>
+
+    <!-- Redesign 对比 -->
+    <div class="design-card full">
+      <div class="media" style="aspect-ratio:auto;padding:0">
+        <div class="compare-row" style="width:100%;padding:20px">
+          <div class="compare-pane">
+            <span class="label">BEFORE · 原版</span>
+            <span class="placeholder">原版截图</span>
+          </div>
+          <div class="compare-pane">
+            <span class="label after">AFTER · 改版</span>
+            <span class="placeholder">Redesign 截图</span>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <span class="badge">UI Redesign</span>
+        <h3>《明日方舟》基建系统改版设计</h3>
+        <p>针对原版基建系统的信息层级和操作效率问题，重新梳理交互流程，优化视觉层级和空间利用。左侧为原版，右侧为改版方案。</p>
+        <p class="tools">工具：Figma · After Effects（微动效预演）</p>
+      </div>
+    </div>
+
+    <!-- Unity 拼接实录 GIF -->
+    <div class="design-card full">
+      <div class="media">
+        <div class="placeholder">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="24" cy="24" r="20"/>
+            <polygon points="19,15 19,33 35,24" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>Unity 界面拼接实录 · 录屏GIF</span>
+        </div>
+      </div>
+      <div class="info">
+        <span class="badge">关键卖点</span>
+        <h3>从设计稿到 Unity 可交互界面</h3>
+        <p>左侧为 Figma 设计稿，右侧为 Unity 中拼接还原的实时界面。图层拆分 → PSD导出 → Unity UGUI 拼接 → 交互逻辑绑定，全流程记录。</p>
+        <span class="unity-badge">在Unity中可落地实现</span>
+      </div>
+    </div>
+
+    <!-- 图标组件 -->
+    <div class="design-card full">
+      <div class="art-grid" style="padding:20px;gap:16px">
+        <div class="art-item" style="aspect-ratio:1">
+          <div class="placeholder"><span>图标 01</span></div>
+        </div>
+        <div class="art-item" style="aspect-ratio:1">
+          <div class="placeholder"><span>图标 02</span></div>
+        </div>
+        <div class="art-item" style="aspect-ratio:1">
+          <div class="placeholder"><span>图标 03</span></div>
+        </div>
+        <div class="art-item" style="aspect-ratio:1">
+          <div class="placeholder"><span>图标 04</span></div>
+        </div>
+        <div class="art-item" style="aspect-ratio:1">
+          <div class="placeholder"><span>图标 05</span></div>
+        </div>
+        <div class="art-item" style="aspect-ratio:1">
+          <div class="placeholder"><span>图标 06</span></div>
+        </div>
+      </div>
+      <div class="info">
+        <span class="badge">视觉设计</span>
+        <h3>功能图标 & 组件练习</h3>
+        <p>一套风格统一的功能图标设计，保持一致的线条粗细、圆角半径与视觉权重。</p>
+        <p class="tools">工具：Illustrator · Figma</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== 3. 3D模型与美术 ========== -->
+<section class="section reveal" id="art">
+  <div class="section-header">
+    <span class="tag">03 · 3D Art</span>
+    <h2>3D 模型与美术</h2>
+    <p class="sub">让作品自己动，让面试官可以旋转缩放</p>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:32px">
+
+    <!-- Sketchfab 交互模型 -->
+    <div>
+      <h3 style="margin-bottom:12px">3D 建模练习</h3>
+      <p style="color:#7a7a85;font-size:0.9rem;margin-bottom:16px">
+        可交互查看 — 拖拽旋转、滚轮缩放、右键平移。右键点击可查看线框模式。
+      </p>
+      <div class="model-wrapper">
+        <iframe
+          src="https://sketchfab.com/models/7w7wA7w7wA7w7wA7w7wA/embed?autostart=1&ui_theme=dark"
+          allow="autoplay;fullscreen;xr-spatial-tracking"
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-presentation">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- 恋与深空同人 -->
+    <div>
+      <h3 style="margin-bottom:12px">《恋与深空》同人画</h3>
+      <p style="color:#7a7a85;font-size:0.9rem;margin-bottom:16px">
+        手绘练习，展示对角色造型和光影的理解，以及参与游戏社区的热情。
+      </p>
+      <div class="art-grid">
+        <div class="art-item">
+          <div class="placeholder"><span>同人作品 1</span></div>
+        </div>
+        <div class="art-item">
+          <div class="placeholder"><span>同人作品 2</span></div>
+        </div>
+        <div class="art-item">
+          <div class="placeholder"><span>同人作品 3</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== 4. Unity落地能力 ========== -->
+<section class="section reveal" id="unity">
+  <div class="section-header">
+    <span class="tag">04 · Unity</span>
+    <h2>Unity 落地能力</h2>
+    <p class="sub">从美术资源到可运行界面的全链路</p>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:32px">
+
+    <!-- UI拼接实录视频 -->
+    <div>
+      <h3 style="margin-bottom:12px">UI 拼接全流程实录</h3>
+      <p style="color:#7a7a85;font-size:0.9rem;margin-bottom:16px">
+        Figma图层 → 切图导出 → Unity Sprite资源导入 → UGUI层级搭建 → 自适应布局 → 最终可交互界面。
+        展示从设计工具到游戏引擎的完整落地路径。
+      </p>
+      <div class="video-wrapper">
+        <iframe
+          src="https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&page=1&high_quality=1&autoplay=0"
+          allowfullscreen
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-presentation">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- 小场景搭建 -->
+    <div>
+      <h3 style="margin-bottom:12px">Unity 小场景搭建</h3>
+      <p style="color:#7a7a85;font-size:0.9rem;margin-bottom:16px">
+        独立完成模型导入、材质调整、灯光布置与后处理效果，搭建完整的展示场景。
+      </p>
+      <div class="video-wrapper">
+        <iframe
+          src="https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&page=2&high_quality=1&autoplay=0"
+          allowfullscreen
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-presentation">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== 5. 视频剪辑 ========== -->
+<section class="section reveal" id="video">
+  <div class="section-header">
+    <span class="tag">05 · Video</span>
+    <h2>视频剪辑</h2>
+    <p class="sub">理解游戏节奏，懂得玩家爽点</p>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:32px">
+
+    <!-- 大厂后期实习 -->
+    <div>
+      <h3 style="margin-bottom:4px">大厂后期实习作品</h3>
+      <p style="color:#7a7a85;font-size:0.9rem;margin-bottom:16px">行业实习期间参与的后期制作项目</p>
+      <div class="video-wrapper">
+        <iframe
+          src="https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&page=3&high_quality=1&autoplay=0"
+          allowfullscreen
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-presentation">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- 游戏二创 -->
+    <div class="video-grid">
+      <div>
+        <h3 style="margin-bottom:12px">《暗区突围》买量/二创</h3>
+        <p style="color:#7a7a85;font-size:0.85rem;margin-bottom:12px">战术节奏剪辑，突出紧张感和操作爽点</p>
+        <div class="video-wrapper">
+          <iframe
+            src="https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&page=4&high_quality=1&autoplay=0"
+            allowfullscreen
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-presentation">
+          </iframe>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin-bottom:12px">《恋与深空》二创剪辑</h3>
+        <p style="color:#7a7a85;font-size:0.85rem;margin-bottom:12px">情感向叙事剪辑，强调氛围与节奏</p>
+        <div class="video-wrapper">
+          <iframe
+            src="https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&page=5&high_quality=1&autoplay=0"
+            allowfullscreen
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-presentation">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="contact-row">
+    <a href="mailto:1559322152@qq.com">✉ 1559322152@qq.com</a>
+    <a href="resume.pdf" download style="background:rgba(212,165,116,.12);border-color:rgba(212,165,116,.3);color:#d4a574">↓ 下载简历</a>
+  </div>
+  <p class="ending">随时期待与您沟通，感谢浏览。</p>
+</footer>
+
+<!-- ========== Scroll Reveal ========== -->
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible')}
+    });
+  },{threshold:0.15});
+  els.forEach(function(el){observer.observe(el)});
+})();
+</script>
+
+</body>
+</html>
