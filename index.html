@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="游戏UI设计师 / 技术美术 | 北京 — 个人作品集">
-<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
 <title>林影珊 — 游戏UI设计 / 技术美术</title>
 <style>
   /* ===== Reset & Base ===== */
@@ -189,7 +188,7 @@
   .hscroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
   .hscroll-item{
     flex:0 0 auto;
-    width:420px;
+    width:260px;
     scroll-snap-align:start;
     border-radius:8px;
     overflow:hidden;
@@ -317,6 +316,16 @@
     margin:0 auto;
   }
 
+  /* ===== Uniform grid image ===== */
+  .ugrid{position:relative;border-radius:6px;overflow:hidden;background:#1a1a1f;border:1px solid rgba(255,255,255,.06)}
+  .ugrid::before{content:'';display:block;padding-bottom:62.5%}
+  .ugrid.ar-1-1::before{padding-bottom:100%}
+  .ugrid.ar-16-9::before{padding-bottom:56.25%}
+  .ugrid.ar-3-1::before{padding-bottom:33.33%}
+  .ugrid.ar-9-16::before{padding-bottom:177.78%}
+  .ugrid.ar-9-16 img{object-fit:contain}
+  .ugrid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
   /* ===== Compare (before/after) ===== */
   .compare-row{
     display:grid;
@@ -355,7 +364,8 @@
   /* ===== Responsive ===== */
   @media(max-width:768px){
     .design-grid,.video-grid,.art-grid,.compare-row,.process-row{grid-template-columns:1fr}
-    .hscroll-item{width:300px}
+    .ugrid{aspect-ratio:16/10 !important}
+    .hscroll-item{width:200px}
     .hero h1{font-size:2rem}
     .section{padding:48px 16px}
     .hero{padding:48px 16px}
@@ -383,7 +393,6 @@
   <div class="meta">
     <a href="mailto:1559322152@qq.com">✉ 1559322152@qq.com</a>
     <a href="resume.pdf" class="resume-btn" download>↓ 下载简历 PDF</a>
-    <a href="https://space.bilibili.com/" target="_blank" rel="noopener">▶ B站主页</a>
   </div>
   <div class="scroll-hint">▼ 向下浏览作品</div>
 </section>
@@ -469,24 +478,21 @@
     </div>
 
     <!-- AI写实角色设计 -->
-    <div class="process-row">
-      <div class="process-step">
-        <div class="step-img">
-          <img src="assets/AI写实角色设计1.jpg" alt="AI写实角色设计1" loading="lazy">
-        </div>
-        <div class="step-label">AI 写实角色 · 01</div>
+    <div class="hscroll">
+      <div class="hscroll-item">
+        <div class="art-img" style="aspect-ratio:1/1"><img src="assets/AI写实角色设计1.jpg" alt="AI写实角色设计1" loading="lazy"></div>
+        <div class="art-caption"><strong>AI 写实角色 · 01</strong></div>
+        <div class="art-tags"><span>AI 辅助</span><span>角色设计</span></div>
       </div>
-      <div class="process-step">
-        <div class="step-img">
-          <img src="assets/AI写实角色设计2.jpg" alt="AI写实角色设计2" loading="lazy">
-        </div>
-        <div class="step-label">AI 写实角色 · 02</div>
+      <div class="hscroll-item">
+        <div class="art-img" style="aspect-ratio:1/1"><img src="assets/AI写实角色设计2.jpg" alt="AI写实角色设计2" loading="lazy"></div>
+        <div class="art-caption"><strong>AI 写实角色 · 02</strong></div>
+        <div class="art-tags"><span>AI 辅助</span><span>角色设计</span></div>
       </div>
-      <div class="process-step">
-        <div class="step-img">
-          <img src="assets/AI写实角色设计3.jpg" alt="AI写实角色设计3" loading="lazy">
-        </div>
-        <div class="step-label">AI 写实角色 · 03</div>
+      <div class="hscroll-item">
+        <div class="art-img" style="aspect-ratio:1/1"><img src="assets/AI写实角色设计3.jpg" alt="AI写实角色设计3" loading="lazy"></div>
+        <div class="art-caption"><strong>AI 写实角色 · 03</strong></div>
+        <div class="art-tags"><span>AI 辅助</span><span>角色设计</span></div>
       </div>
     </div>
   </div>
@@ -501,14 +507,14 @@
       <div class="hscroll-item">
         <div class="art-img"><img src="assets/场景设计纳米比亚.jpg" alt="场景设计纳米比亚" loading="lazy"></div>
         <div class="art-caption">
-          <strong>场景概念 · 纳米比亚</strong><br>灵感来源：非洲地貌的光影与色彩<br>工具：Photoshop
+          <strong>场景概念 · 纳米比亚</strong><br>灵感来源：非洲地貌的光影与色彩<br>工具：Procreate
         </div>
         <div class="art-tags"><span>场景设计</span><span>概念图</span></div>
       </div>
       <div class="hscroll-item">
         <div class="art-img"><img src="assets/场景设计种子库斯瓦尔巴.jpg" alt="场景设计种子库" loading="lazy"></div>
         <div class="art-caption">
-          <strong>场景概念 · 种子库</strong><br>灵感来源：科幻建筑与生态保护主题<br>工具：Photoshop
+          <strong>场景概念 · 种子库</strong><br>灵感来源：科幻建筑与生态保护主题<br>工具：Procreate
         </div>
         <div class="art-tags"><span>场景设计</span><span>概念图</span></div>
       </div>
@@ -528,88 +534,60 @@
 
   <div class="design-grid">
 
-    <!-- 主打：商业项目 -->
-    <div class="design-card full">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px">
-        <div style="border-radius:6px;overflow:hidden;position:relative;aspect-ratio:16/10;background:#1a1a1f">
-          <span style="position:absolute;top:8px;left:8px;z-index:2;font-size:0.7rem;font-weight:600;padding:3px 10px;border-radius:3px;background:rgba(212,165,116,.25);color:#d4a574">商业项目</span>
-          <img src="assets/商业项目科研类UI.png" alt="商业项目科研类UI" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">
-        </div>
-        <div style="border-radius:6px;overflow:hidden;position:relative;aspect-ratio:16/10;background:#1a1a1f">
-          <span style="position:absolute;top:8px;left:8px;z-index:2;font-size:0.7rem;font-weight:600;padding:3px 10px;border-radius:3px;background:rgba(212,165,116,.25);color:#d4a574">商业项目</span>
-          <img src="assets/商业项目背单词网站UI.png" alt="商业项目背单词网站UI" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">
-        </div>
-      </div>
-      <div class="info">
-        <span class="badge">商业项目</span>
-        <h3>商业 UI 项目</h3>
-        <p>科研类平台 & 背单词网站界面设计，完整负责从需求沟通到高保真原型交付。</p>
-        <p class="tools">工具：Figma · Photoshop</p>
-      </div>
-    </div>
+    <!-- UI设计项目合集：一排三列 -->
+    <div class="design-card full" style="border:none;background:none;padding:0">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;align-items:stretch">
 
-    <!-- 练习项目 -->
-    <div class="design-card full">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px">
-        <div style="border-radius:6px;overflow:hidden;position:relative;aspect-ratio:16/10;background:#1a1a1f">
-          <span style="position:absolute;top:8px;left:8px;z-index:2;font-size:0.7rem;font-weight:600;padding:3px 10px;border-radius:3px;background:rgba(0,0,0,.6);color:#c8c8cf">UI 练习</span>
-          <img src="assets/健身类UI设计.png" alt="健身类UI设计" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">
+        <!-- 商业项目 -->
+        <div style="border-radius:10px;overflow:hidden;background:#141418;border:1px solid rgba(255,255,255,.06);display:grid;grid-template-rows:1fr auto">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px;align-content:center">
+            <div class="ugrid">
+              <span style="position:absolute;top:8px;left:8px;z-index:2;font-size:0.7rem;font-weight:600;padding:3px 10px;border-radius:3px;background:rgba(212,165,116,.25);color:#d4a574">商业项目</span>
+              <img src="assets/商业项目科研类UI.jpg" alt="商业项目科研类UI" loading="lazy">
+            </div>
+            <div class="ugrid">
+              <span style="position:absolute;top:8px;left:8px;z-index:2;font-size:0.7rem;font-weight:600;padding:3px 10px;border-radius:3px;background:rgba(212,165,116,.25);color:#d4a574">商业项目</span>
+              <img src="assets/商业项目背单词网站UI.jpg" alt="商业项目背单词网站UI" loading="lazy">
+            </div>
+          </div>
+          <div class="info">
+            <span class="badge">商业项目</span>
+            <h3>商业 UI 项目</h3>
+            <p>科研类平台 & 背单词网站界面设计。</p>
+            <p class="tools">工具：Figma</p>
+          </div>
         </div>
-        <div style="border-radius:6px;overflow:hidden;position:relative;aspect-ratio:16/10;background:#1a1a1f">
-          <span style="position:absolute;top:8px;left:8px;z-index:2;font-size:0.7rem;font-weight:600;padding:3px 10px;border-radius:3px;background:rgba(0,0,0,.6);color:#c8c8cf">UI 练习</span>
-          <img src="assets/就业类UI设计.png" alt="就业类UI设计" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">
-        </div>
-      </div>
-      <div class="info">
-        <span class="badge">个人练习</span>
-        <h3>健身 & 就业类 App UI 设计</h3>
-        <p>针对垂直领域的功能型 App 界面练习，注重信息架构与操作效率。</p>
-        <p class="tools">工具：Figma · Photoshop</p>
-      </div>
-    </div>
 
-    <!-- 交互空间设计 -->
-    <div class="design-card full">
-      <div style="padding:12px">
-        <div style="border-radius:6px;overflow:hidden;position:relative;aspect-ratio:16/9;background:#1a1a1f">
-          <img src="assets/交互空间设计.png" alt="交互空间设计" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">
+        <!-- 练习项目 -->
+        <div style="border-radius:10px;overflow:hidden;background:#141418;border:1px solid rgba(255,255,255,.06);display:grid;grid-template-rows:1fr auto">
+          <div style="padding:8px;display:flex;align-items:center">
+            <div class="ugrid" style="width:100%">
+              <img src="assets/UI设计合并.jpg" alt="UI设计合并" loading="lazy">
+            </div>
+          </div>
+          <div class="info" style="padding:12px">
+            <span class="badge">个人练习</span>
+            <h3 style="font-size:1rem">健身 & 就业类 UI</h3>
+            <p style="font-size:0.82rem">功能型 App 界面练习。</p>
+            <p class="tools">工具：Figma</p>
+          </div>
         </div>
-      </div>
-      <div class="info">
-        <span class="badge">UI 项目</span>
-        <h3>交互空间设计</h3>
-        <p>探索空间交互与界面设计的融合，关注用户在三维空间中的信息获取体验。</p>
-        <p class="tools">工具：Figma · Photoshop</p>
-      </div>
-    </div>
 
-    <!-- 图标组件 -->
-    <div class="design-card full">
-      <div class="art-grid" style="padding:20px;gap:16px">
-        <div class="art-item" style="aspect-ratio:1">
-          <div class="placeholder"><span>图标 01</span></div>
+        <!-- 交互空间 -->
+        <div style="border-radius:10px;overflow:hidden;background:#141418;border:1px solid rgba(255,255,255,.06);display:grid;grid-template-rows:1fr auto">
+          <div style="padding:10px;display:flex;align-items:center">
+            <div class="ugrid" style="width:100%">
+              <img src="assets/交互空间设计.jpg" alt="交互空间设计" loading="lazy">
+            </div>
+          </div>
+          <div class="info" style="padding:12px">
+            <span class="badge">UI 项目</span>
+            <h3 style="font-size:1rem">交互空间设计</h3>
+            <p style="font-size:0.82rem">空间交互与界面设计的融合探索。</p>
+            <p class="tools">工具：Figma</p>
+          </div>
         </div>
-        <div class="art-item" style="aspect-ratio:1">
-          <div class="placeholder"><span>图标 02</span></div>
-        </div>
-        <div class="art-item" style="aspect-ratio:1">
-          <div class="placeholder"><span>图标 03</span></div>
-        </div>
-        <div class="art-item" style="aspect-ratio:1">
-          <div class="placeholder"><span>图标 04</span></div>
-        </div>
-        <div class="art-item" style="aspect-ratio:1">
-          <div class="placeholder"><span>图标 05</span></div>
-        </div>
-        <div class="art-item" style="aspect-ratio:1">
-          <div class="placeholder"><span>图标 06</span></div>
-        </div>
-      </div>
-      <div class="info">
-        <span class="badge">视觉设计</span>
-        <h3>功能图标 & 组件练习</h3>
-        <p>一套风格统一的功能图标设计，保持一致的线条粗细、圆角半径与视觉权重。</p>
-        <p class="tools">工具：Illustrator · Figma</p>
+
       </div>
     </div>
 
@@ -623,31 +601,84 @@
   <div class="section-header">
     <span class="tag">03 · 3D Art</span>
     <h2>3D 模型与美术</h2>
-    <p class="sub">让作品自己动，让面试官可以旋转缩放</p>
+    <p class="sub">从高模雕刻到 PBR 材质，全流程建模能力</p>
   </div>
 
   <div style="display:flex;flex-direction:column;gap:32px">
 
-    <!-- Sketchfab 交互模型 -->
-    <div>
-      <h3 style="margin-bottom:12px">3D 建模练习</h3>
-      <p style="color:#7a7a85;font-size:0.9rem;margin-bottom:16px">
-        可交互查看 — 拖拽旋转、滚轮缩放、右键平移。右键点击可查看线框模式。
-      </p>
-      <div class="model-wrapper">
-        <model-viewer
-          src="assets/model.glb"
-          camera-controls
-          auto-rotate
-          auto-rotate-delay="0"
-          rotation-per-second="30deg"
-          exposure="1"
-          environment-image="neutral"
-          style="width:100%;height:100%;background:#1a1a1f">
-        </model-viewer>
+    <!-- 建模渲染 -->
+    <div class="design-card">
+      <div class="ugrid ar-16-9">
+        <img src="assets/千岁兰植物拟人角色设计的建模渲染.jpg" alt="千岁兰建模渲染" loading="lazy">
+      </div>
+      <div class="info">
+        <span class="badge">3D 建模</span>
+        <h3>3D 建模 — 千岁兰</h3>
+        <p>植物拟人角色 · 千岁兰 的完整建模流程，包含头部布线、骨骼蒙皮与 Q版三视图。</p>
+        <p class="tools">工具：3ds Max · Substance Painter · V-Ray</p>
       </div>
     </div>
 
+    <!-- 三视图 -->
+    <div class="design-card">
+      <div class="ugrid ar-3-1">
+        <img src="assets/千岁兰植物拟人角色设计的建模q版的三视图.jpg" alt="千岁兰Q版三视图" loading="lazy">
+      </div>
+      <div class="info">
+        <span class="badge">三视图</span>
+        <h3>Q版三视图</h3>
+        <p>千岁兰角色的 Q版三视图展示。</p>
+        <p class="tools">工具：3ds Max · V-Ray</p>
+      </div>
+    </div>
+
+    <!-- 骨骼蒙皮 + 头部布线 -->
+    <div class="design-card">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:8px;padding:8px">
+        <div class="ugrid">
+          <img src="assets/千岁兰植物拟人角色设计的建模骨骼蒙皮权重.png" alt="骨骼蒙皮权重" loading="lazy">
+          <p style="position:absolute;bottom:0;left:0;right:0;text-align:center;padding:4px;font-size:0.7rem;color:#c8c8cf;background:rgba(0,0,0,.5);z-index:1">骨骼蒙皮 & 权重</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+          <div class="ugrid ar-1-1">
+            <img src="assets/千岁兰植物拟人角色设计的建模头部的布线正脸.png" alt="头部布线正脸" loading="lazy">
+            <p style="position:absolute;bottom:0;left:0;right:0;text-align:center;padding:4px;font-size:0.7rem;color:#c8c8cf;background:rgba(0,0,0,.5);z-index:1">正脸</p>
+          </div>
+          <div class="ugrid ar-1-1">
+            <img src="assets/千岁兰植物拟人角色设计的建模头部的布线四分之三侧脸.png" alt="头部布线四分之三侧脸" loading="lazy">
+            <p style="position:absolute;bottom:0;left:0;right:0;text-align:center;padding:4px;font-size:0.7rem;color:#c8c8cf;background:rgba(0,0,0,.5);z-index:1">3/4 侧脸</p>
+          </div>
+          <div class="ugrid ar-1-1">
+            <img src="assets/千岁兰植物拟人角色设计的建模头部的布线侧脸.png" alt="头部布线侧脸" loading="lazy">
+            <p style="position:absolute;bottom:0;left:0;right:0;text-align:center;padding:4px;font-size:0.7rem;color:#c8c8cf;background:rgba(0,0,0,.5);z-index:1">侧脸</p>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <span class="badge">技术展示</span>
+        <h3>骨骼蒙皮 & 头部布线</h3>
+        <p>骨骼蒙皮权重分配与头部拓扑布线三视图。</p>
+        <p class="tools">工具：3ds Max · V-Ray</p>
+      </div>
+    </div>
+
+    <!-- 梦困于宙 -->
+    <div class="design-card">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px">
+        <div class="ugrid">
+          <img src="assets/建模作品梦困于宙.jpg" alt="梦困于宙1" loading="lazy">
+        </div>
+        <div class="ugrid">
+          <img src="assets/建模作品梦困于宙2.jpg" alt="梦困于宙2" loading="lazy">
+        </div>
+      </div>
+      <div class="info">
+        <span class="badge">3D 场景</span>
+        <h3>建模作品 — 梦困于宙</h3>
+        <p>独立完成的场景建模作品。</p>
+        <p class="tools">工具：3ds Max</p>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -664,36 +695,44 @@
 
   <div style="display:flex;flex-direction:column;gap:32px">
 
-    <!-- UI拼接实录视频 -->
-    <div>
-      <h3 style="margin-bottom:12px">UI 拼接全流程实录</h3>
-      <p style="color:#7a7a85;font-size:0.9rem;margin-bottom:16px">
-        Figma图层 → 切图导出 → Unity Sprite资源导入 → UGUI层级搭建 → 自适应布局 → 最终可交互界面。
-        展示从设计工具到游戏引擎的完整落地路径。
-      </p>
-      <div class="video-wrapper">
-        <iframe
-          src="https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&page=1&high_quality=1&autoplay=0"
-          allowfullscreen
-          loading="lazy"
-          sandbox="allow-scripts allow-same-origin allow-presentation">
-        </iframe>
+    <!-- 六气天行录 -->
+    <div class="design-card">
+      <div class="ugrid ar-16-9">
+        <img src="assets/实践《六气天行》.jpg" alt="六气天行录项目截图" loading="lazy">
+      </div>
+      <div class="info">
+        <span class="badge">AR 交互绘本</span>
+        <h3>《六气天行录》</h3>
+        <p>交互绘本项目的 AR 部分美术与建模实现。负责 AR 场景中的角色建模、材质制作与 Unity 引擎内的美术落地。</p>
+        <p class="tools">工具：Unity · 3ds Max · Photoshop · Substance Painter</p>
       </div>
     </div>
 
-    <!-- 小场景搭建 -->
-    <div>
-      <h3 style="margin-bottom:12px">Unity 小场景搭建</h3>
-      <p style="color:#7a7a85;font-size:0.9rem;margin-bottom:16px">
-        独立完成模型导入、材质调整、灯光布置与后处理效果，搭建完整的展示场景。
-      </p>
-      <div class="video-wrapper">
-        <iframe
-          src="https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&page=2&high_quality=1&autoplay=0"
-          allowfullscreen
-          loading="lazy"
-          sandbox="allow-scripts allow-same-origin allow-presentation">
-        </iframe>
+    <div class="video-wrapper">
+      <video
+        src="assets/六气天行录.mp4"
+        controls
+        preload="none"
+        poster="assets/实践《六气天行》.jpg"
+        style="width:100%;height:100%;background:#0b0b0d">
+      </video>
+    </div>
+
+    <!-- Unity场景搭建 -->
+    <div class="design-card">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px">
+        <div class="ugrid">
+          <img src="assets/在unity里面搭建的地图.jpg" alt="Unity场景搭建1" loading="lazy">
+        </div>
+        <div class="ugrid">
+          <img src="assets/在unity里面搭建的地图2.jpg" alt="Unity场景搭建2" loading="lazy">
+        </div>
+      </div>
+      <div class="info">
+        <span class="badge">Unity</span>
+        <h3>Unity 场景搭建</h3>
+        <p>在 Unity 中独立完成模型导入、材质调整与场景搭建。</p>
+        <p class="tools">工具：Unity</p>
       </div>
     </div>
 
@@ -712,47 +751,25 @@
 
   <div style="display:flex;flex-direction:column;gap:32px">
 
-    <!-- 大厂后期实习 -->
-    <div>
-      <h3 style="margin-bottom:4px">大厂后期实习作品</h3>
-      <p style="color:#7a7a85;font-size:0.9rem;margin-bottom:16px">行业实习期间参与的后期制作项目</p>
-      <div class="video-wrapper">
-        <iframe
-          src="https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&page=3&high_quality=1&autoplay=0"
-          allowfullscreen
-          loading="lazy"
-          sandbox="allow-scripts allow-same-origin allow-presentation">
-        </iframe>
+    <!-- 70年校庆AE -->
+    <div class="design-card">
+      <div class="video-wrapper" style="border-radius:0;border:none">
+        <video
+          src="assets/用ae做的70年校庆的动态图形.mp4"
+          controls
+          muted
+          preload="none"
+          style="width:100%;height:100%;background:#0b0b0d">
+        </video>
+      </div>
+      <div class="info">
+        <span class="badge">动态图形</span>
+        <h3>70 年校庆动态图形</h3>
+        <p>使用 After Effects 制作的校庆动态图形设计。</p>
+        <p class="tools">工具：After Effects</p>
       </div>
     </div>
 
-    <!-- 游戏二创 -->
-    <div class="video-grid">
-      <div>
-        <h3 style="margin-bottom:12px">《暗区突围》买量/二创</h3>
-        <p style="color:#7a7a85;font-size:0.85rem;margin-bottom:12px">战术节奏剪辑，突出紧张感和操作爽点</p>
-        <div class="video-wrapper">
-          <iframe
-            src="https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&page=4&high_quality=1&autoplay=0"
-            allowfullscreen
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin allow-presentation">
-          </iframe>
-        </div>
-      </div>
-      <div>
-        <h3 style="margin-bottom:12px">《恋与深空》二创剪辑</h3>
-        <p style="color:#7a7a85;font-size:0.85rem;margin-bottom:12px">情感向叙事剪辑，强调氛围与节奏</p>
-        <div class="video-wrapper">
-          <iframe
-            src="https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&page=5&high_quality=1&autoplay=0"
-            allowfullscreen
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin allow-presentation">
-          </iframe>
-        </div>
-      </div>
-    </div>
 
   </div>
 </section>
