@@ -327,6 +327,19 @@
   .ugrid.ar-9-16::before{padding-bottom:177.78%}
   .ugrid.ar-9-16 img{object-fit:contain}
   .ugrid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.g{display:grid;gap:8px;padding:8px}
+.g.no-pad{padding:0}
+.g.gap6{gap:6px}
+.g.gap16{gap:16px}
+.g.pad12{padding:12px}
+.g.g2{grid-template-columns:1fr 1fr}
+.g.g3{grid-template-columns:repeat(3,1fr)}
+.g.g4{grid-template-columns:repeat(4,1fr)}
+.g.g12{grid-template-columns:1fr 2fr}
+.g.g211{grid-template-columns:2fr 1fr 1fr}
+.g.align-center{align-items:center}
+.g.align-center-content{align-content:center}
+.g.align-stretch{align-items:stretch}
 
   /* ===== Compare (before/after) ===== */
   .compare-row{
@@ -372,6 +385,9 @@
     .section{padding:48px 16px}
     .hero{padding:48px 16px}
     .scroll-hint{display:none}
+    .g.g2,.g.g3,.g.g12,.g.g211{grid-template-columns:1fr}
+    .g.g4{grid-template-columns:repeat(2,1fr)}
+    .meta{flex-wrap:wrap;gap:10px}
   }
 
   /* ===== Scroll fade-in ===== */
@@ -444,7 +460,7 @@
         <div class="ugrid ar-28-10" style="margin:8px">
           <img src="assets/美术/写实国风3.jpg" alt="写实国风角色3" loading="lazy">
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 8px 8px">
+        <div class="g g2 no-pad" style="margin:0 8px 8px">
           <div class="ugrid ar-28-10"><img src="assets/美术/写实国风3-2 .jpg" alt="写实国风角色3细节1" loading="lazy"></div>
           <div class="ugrid ar-28-10"><img src="assets/美术/写实国风3-3 .jpg" alt="写实国风角色3细节2" loading="lazy"></div>
         </div>
@@ -471,7 +487,7 @@
         <div class="ugrid ar-28-10" style="margin:8px">
           <img src="assets/美术/写实国风5.jpg" alt="写实国风角色5" loading="lazy">
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 8px 8px">
+        <div class="g g2 no-pad" style="margin:0 8px 8px">
           <div class="ugrid ar-28-10"><img src="assets/美术/写实国风5-2 .jpg" alt="写实国风角色5变体" loading="lazy"></div>
           <div class="ugrid ar-28-10"><img src="assets/美术/写实国风5-3 .jpg" alt="写实国风角色5细节" loading="lazy"></div>
         </div>
@@ -605,11 +621,11 @@
 
     <!-- UI设计项目合集：一排三列 -->
     <div class="design-card full" style="border:none;background:none;padding:0">
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;align-items:stretch">
+      <div class="g g211 gap16 no-pad align-stretch">
 
         <!-- 商业项目 -->
         <div style="border-radius:10px;overflow:hidden;background:#141418;border:1px solid rgba(255,255,255,.06);display:grid;grid-template-rows:1fr auto">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px;align-content:center">
+          <div class="g g2 pad12 align-center-content">
             <div class="ugrid">
               <span style="position:absolute;top:8px;left:8px;z-index:2;font-size:0.7rem;font-weight:600;padding:3px 10px;border-radius:3px;background:rgba(212,165,116,.25);color:#d4a574">商业项目</span>
               <img src="assets/ui/商业项目科研类UI.jpg" alt="商业项目科研类UI" loading="lazy">
@@ -671,7 +687,7 @@
     </div>
     <div style="display:flex;flex-direction:column;gap:16px">
       <div class="design-card">
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:8px">
+        <div class="g g4">
           <div class="ugrid ar-9-16"><img src="assets/gui/GUI-碎梦三消界面效果图.jpg" alt="碎梦三消界面" loading="lazy"></div>
           <div class="ugrid ar-9-16"><img src="assets/gui/GUI-碎梦签到界面.jpg" alt="碎梦签到界面" loading="lazy"></div>
           <div class="ugrid ar-9-16"><img src="assets/gui/GUI-碎梦主界面其他效果2.jpg" alt="碎梦主界面" loading="lazy"></div>
@@ -685,7 +701,7 @@
         </div>
       </div>
       <div class="design-card">
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:8px">
+        <div class="g g4">
           <div class="ugrid ar-9-16"><img src="assets/gui/GUI-菜菜-技能升级界面效果图.jpg" alt="菜菜技能升级" loading="lazy"></div>
           <div class="ugrid ar-9-16"><img src="assets/gui/GUI-菜菜-抽卡页面.jpg" alt="菜菜抽卡页面" loading="lazy"></div>
           <div class="ugrid ar-9-16"><img src="assets/gui/GUI-菜菜-弹窗.jpg" alt="菜菜弹窗" loading="lazy"></div>
@@ -717,32 +733,32 @@
     <!-- 三消界面动效 -->
     <div class="design-card" style="margin-top:16px">
       <div style="height:clamp(300px,42vw,440px);background:#0b0b0d;border-bottom:1px solid rgba(255,255,255,.06)">
-        <video src="assets/video/碎梦入场视频.mp4" muted loop playsinline preload="none" data-lazy style="width:100%;height:100%;object-fit:contain"></video>
+        <video data-src="assets/video/碎梦入场视频.mp4" muted loop playsinline data-lazy autoplay style="width:100%;height:100%;object-fit:contain"></video>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:8px">
+      <div class="g g4">
         <div class="ugrid ar-1-1">
-          <video src="assets/video/三消界面动效已上线项目碎梦迷失 (单格消除).mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (单格消除).mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
         </div>
         <div class="ugrid ar-1-1">
-          <video src="assets/video/三消界面动效已上线项目碎梦迷失 (线性消除).mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (线性消除).mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
         </div>
         <div class="ugrid ar-1-1">
-          <video src="assets/video/三消界面动效已上线项目碎梦迷失 (区域消除).mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (区域消除).mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
         </div>
         <div class="ugrid ar-1-1">
-          <video src="assets/video/三消界面动效已上线项目碎梦迷失 (颜色消除).mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (颜色消除).mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
         </div>
         <div class="ugrid ar-1-1">
-          <video src="assets/video/三消界面动效已上线项目碎梦迷失 (正反馈（good）).mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (正反馈（good）).mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
         </div>
         <div class="ugrid ar-1-1">
-          <video src="assets/video/三消界面动效已上线项目碎梦迷失 (正反馈（amazing）).mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (正反馈（amazing）).mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
         </div>
         <div class="ugrid ar-1-1">
-          <video src="assets/video/三消界面动效已上线项目碎梦迷失 (正反馈（unbelievable）).mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (正反馈（unbelievable）).mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
         </div>
         <div class="ugrid ar-1-1">
-          <video src="assets/video/三消界面动效已上线项目碎梦迷失 (过场动画).mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (过场动画).mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
         </div>
       </div>
       <div class="info">
@@ -755,12 +771,12 @@
 
     <!-- 碎梦投流与过场 -->
     <div class="design-card">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px">
+      <div class="g g2">
         <div class="ugrid ar-1-1">
-          <video src="assets/video/碎梦投流.mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+          <video data-src="assets/video/碎梦投流.mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
         </div>
         <div class="ugrid ar-1-1">
-          <video src="assets/video/碎梦过场.mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+          <video data-src="assets/video/碎梦过场.mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
         </div>
       </div>
       <div class="info">
@@ -773,16 +789,16 @@
 
     <!-- 游戏动画动效 -->
     <div class="design-card">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;align-items:center">
+      <div class="g g2 align-center">
         <div class="ugrid ar-1-1">
-          <video src="assets/video/树叶摆到.mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+          <video data-src="assets/video/树叶摆到.mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px">
           <div class="ugrid ar-3-1">
-            <video src="assets/video/菜菜武器鞭子一级.mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+            <video data-src="assets/video/菜菜武器鞭子一级.mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
           </div>
           <div class="ugrid ar-3-1">
-            <video src="assets/video/菜菜武器鞭子二级.mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+            <video data-src="assets/video/菜菜武器鞭子二级.mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
           </div>
         </div>
       </div>
@@ -796,12 +812,12 @@
 
     <!-- 2D 动效 -->
     <div class="design-card">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px">
+      <div class="g g2">
         <div class="ugrid ar-1-1">
-          <video src="assets/video/2d动效-走路.mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+          <video data-src="assets/video/2d动效-走路.mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
         </div>
         <div class="ugrid ar-1-1">
-          <video src="assets/video/2d动效-药瓶武器.mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+          <video data-src="assets/video/2d动效-药瓶武器.mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
         </div>
       </div>
       <div class="info">
@@ -815,7 +831,7 @@
     <!-- 动态名片 -->
     <div class="design-card">
       <div class="ugrid ar-16-9" style="border:none">
-        <video src="assets/video/动态名片.mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+        <video data-src="assets/video/动态名片.mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
       </div>
       <div class="info">
         <span class="badge">动态名片</span>
@@ -826,10 +842,10 @@
     </div>
 
     <!-- 漫剧片段 -->
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+    <div class="g g2 gap16 no-pad">
       <div class="design-card">
         <div class="ugrid ar-1-1" style="border:none">
-          <video src="assets/video/《奇门风水大天师》.mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0b0b0d"></video>
+          <video data-src="assets/video/《奇门风水大天师》.mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0b0b0d"></video>
         </div>
         <div class="info">
           <span class="badge">漫剧片段</span>
@@ -840,7 +856,7 @@
       </div>
       <div class="design-card">
         <div class="ugrid ar-1-1" style="border:none">
-          <video src="assets/video/《拥有透视当天》.mp4" muted loop playsinline preload="none" data-lazy style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0b0b0d"></video>
+          <video data-src="assets/video/《拥有透视当天》.mp4" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0b0b0d"></video>
         </div>
         <div class="info">
           <span class="badge">漫剧片段</span>
@@ -854,14 +870,12 @@
     <!-- 70年校庆AE -->
     <div class="design-card">
       <div class="video-wrapper" style="border-radius:0;border:none">
-        <video
-          src="assets/video/用ae做的70年校庆的动态图形.mp4"
+        <video data-src="assets/video/用ae做的70年校庆的动态图形.mp4"
           muted
           loop
           playsinline
           preload="none"
-          data-lazy
-          style="width:100%;height:100%;object-fit:contain;background:#0b0b0d">
+          data-lazy autoplay style="width:100%;height:100%;object-fit:contain;background:#0b0b0d">
         </video>
       </div>
       <div class="info">
@@ -890,7 +904,7 @@
 
     <!-- 千岁兰建模 + 三视图 -->
     <div class="design-card">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px">
+      <div class="g g2">
         <div class="ugrid ar-2-1">
           <img src="assets/3d/千岁兰植物拟人角色设计的建模渲染.jpg" alt="千岁兰建模渲染" loading="lazy" style="object-fit:contain">
         </div>
@@ -908,12 +922,12 @@
 
     <!-- 骨骼蒙皮 + 头部布线 -->
     <div class="design-card">
-      <div style="display:grid;grid-template-columns:1fr 2fr;gap:8px;padding:8px">
+      <div class="g g12">
         <div class="ugrid">
           <img src="assets/3d/千岁兰植物拟人角色设计的建模骨骼蒙皮权重.png" alt="骨骼蒙皮权重" loading="lazy">
           <p style="position:absolute;bottom:0;left:0;right:0;text-align:center;padding:4px;font-size:0.7rem;color:#c8c8cf;background:rgba(0,0,0,.5);z-index:1">骨骼蒙皮 & 权重</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+        <div class="g g3 gap6 no-pad">
           <div class="ugrid ar-1-1">
             <img src="assets/3d/千岁兰植物拟人角色设计的建模头部的布线正脸.png" alt="头部布线正脸" loading="lazy">
             <p style="position:absolute;bottom:0;left:0;right:0;text-align:center;padding:4px;font-size:0.7rem;color:#c8c8cf;background:rgba(0,0,0,.5);z-index:1">正脸</p>
@@ -938,7 +952,7 @@
 
     <!-- 梦困于宙 -->
     <div class="design-card">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px">
+      <div class="g g3">
         <div class="ugrid">
           <img src="assets/3d/建模作品梦困于宙.jpg" alt="梦困于宙1" loading="lazy" style="object-fit:contain">
         </div>
@@ -986,8 +1000,7 @@
     </div>
 
     <div class="video-wrapper">
-      <video
-        src="assets/unity/六气天行录.mp4"
+      <video src="assets/unity/六气天行录.mp4"
         controls
         preload="none"
         poster="assets/unity/实践《六气天行》.jpg"
@@ -997,7 +1010,7 @@
 
     <!-- Unity场景搭建 -->
     <div class="design-card">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px">
+      <div class="g g2">
         <div class="ugrid">
           <img src="assets/unity/在unity里面搭建的地图.jpg" alt="Unity场景搭建1" loading="lazy">
         </div>
@@ -1033,12 +1046,18 @@
 <script>
 (function(){
   var els = document.querySelectorAll('.reveal');
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){e.target.classList.add('visible')}
-    });
-  },{threshold:0.15});
-  els.forEach(function(el){observer.observe(el)});
+  function show(el){ el.classList.add('visible') }
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ show(e.target) }
+      });
+    },{threshold:0});
+    els.forEach(function(el){ observer.observe(el) });
+    setTimeout(function(){ els.forEach(show) }, 3000);
+  } else {
+    els.forEach(show);
+  }
 })();
 </script>
 
@@ -1046,20 +1065,40 @@
 <script>
 (function(){
   var vids = document.querySelectorAll('video[data-lazy]');
+  function loadV(v){
+    if(!v.src){
+      var d = v.getAttribute('data-src');
+      if(d){ v.src = d; v.load(); }
+    }
+  }
   function playV(v){
     var p = v.play();
     if(p && p.catch){ p.catch(function(){}) }
   }
+  function pauseV(v){
+    try{ v.pause() }catch(e){}
+  }
+  function start(v){ loadV(v); playV(v) }
   if('IntersectionObserver' in window){
     var vio = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        if(e.isIntersecting){ playV(e.target) } else { e.target.pause() }
+        if(e.isIntersecting){ start(e.target) } else { pauseV(e.target) }
       });
     },{rootMargin:'300px'});
     vids.forEach(function(v){ vio.observe(v) });
   } else {
-    vids.forEach(playV);
+    vids.forEach(start);
   }
+  function kick(){
+    vids.forEach(function(v){
+      var r = v.getBoundingClientRect();
+      if(r.top < innerHeight + 400 && r.bottom > -400){ start(v) }
+    });
+  }
+  ['touchstart','touchend','scroll','click'].forEach(function(ev){
+    window.addEventListener(ev, kick, {passive:true, capture:true});
+  });
+  setTimeout(kick, 5000);
 })();
 </script>
 
