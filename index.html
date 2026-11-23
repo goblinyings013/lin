@@ -24,9 +24,9 @@
     content:'';
     position:fixed;inset:0;z-index:0;pointer-events:none;
     background:
-      radial-gradient(700px 420px at 82% 6%, rgba(212,165,116,.10), transparent 62%),
-      radial-gradient(800px 560px at 8% 96%, rgba(118,96,178,.09), transparent 60%),
-      radial-gradient(500px 380px at 50% 45%, rgba(212,165,116,.04), transparent 70%);
+      radial-gradient(700px 420px at 82% 6%, rgba(78,205,196,.10), transparent 62%),
+      radial-gradient(800px 560px at 8% 96%, rgba(78,205,196,.07), transparent 60%),
+      radial-gradient(500px 380px at 50% 45%, rgba(78,205,196,.04), transparent 70%);
   }
   body::after{
     content:'';
@@ -37,7 +37,7 @@
   h1{font-weight:700;letter-spacing:-0.02em}
   h2{font-weight:600;letter-spacing:-0.01em}
   h3{font-weight:600;color:#e8e8ef}
-  .accent{color:#d4a574}
+  .accent{color:#4ecdc4}
 
   .section{padding:80px 24px;max-width:1080px;margin:0 auto;position:relative;z-index:1}
   .section-header{margin-bottom:44px}
@@ -45,9 +45,9 @@
     display:inline-flex;align-items:center;gap:10px;
     font-size:0.72rem;font-weight:600;
     letter-spacing:0.28em;text-transform:uppercase;
-    color:#d4a574;margin-bottom:18px;
+    color:#4ecdc4;margin-bottom:18px;
   }
-  .section-header .tag::before{content:'';width:34px;height:1px;background:#d4a574}
+  .section-header .tag::before{content:'';width:34px;height:1px;background:#4ecdc4}
   .section-header h2{font-size:clamp(1.7rem,3.2vw,2.2rem);margin-bottom:8px}
   .section-header .sub{color:#7a7a85;font-size:0.95rem}
 
@@ -65,14 +65,14 @@
     letter-spacing:0.3em;text-transform:uppercase;
     color:#9a9aa5;margin-bottom:26px;
   }
-  .hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:#d4a574;box-shadow:0 0 12px rgba(212,165,116,.8)}
+  .hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:#4ecdc4;box-shadow:0 0 12px rgba(78,205,196,.8)}
   .hero h1{
     font-size:clamp(3.2rem,10vw,5.8rem);
     line-height:1.04;letter-spacing:-0.03em;
     margin-bottom:22px;
   }
   .hero h1 .name{
-    background:linear-gradient(120deg,#f0d9b8 0%,#d4a574 45%,#a97c4e 100%);
+    background:linear-gradient(120deg,#c8f4ef 0%,#4ecdc4 45%,#2d948c 100%);
     -webkit-background-clip:text;background-clip:text;
     color:transparent;
   }
@@ -84,7 +84,7 @@
     color:#9a9aa5;
     backdrop-filter:blur(6px);
   }
-  .hero .role-tags span.hl{border-color:rgba(212,165,116,.5);color:#d4a574}
+  .hero .role-tags span.hl{border-color:rgba(78,205,196,.5);color:#4ecdc4}
   .hero .intro{color:#6a6a75;max-width:520px;font-size:0.98rem}
   .hero .meta{
     display:flex;flex-wrap:wrap;gap:12px;
@@ -101,9 +101,9 @@
     backdrop-filter:blur(6px);
     transition:border-color .25s,background .25s,color .25s;
   }
-  .hero .meta a:hover{border-color:rgba(212,165,116,.5);color:#d4a574;background:rgba(212,165,116,.07)}
-  .hero .resume-btn{border-color:rgba(212,165,116,.35) !important;color:#d4a574 !important;background:rgba(212,165,116,.10) !important}
-  .hero .resume-btn:hover{background:rgba(212,165,116,.18) !important}
+  .hero .meta a:hover{border-color:rgba(78,205,196,.5);color:#4ecdc4;background:rgba(78,205,196,.07)}
+  .hero .resume-btn{border-color:rgba(78,205,196,.35) !important;color:#4ecdc4 !important;background:rgba(78,205,196,.10) !important}
+  .hero .resume-btn:hover{background:rgba(78,205,196,.18) !important}
   .scroll-hint{
     position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
     display:flex;flex-direction:column;align-items:center;gap:8px;
@@ -111,7 +111,7 @@
   }
   .scroll-hint::after{
     content:'';width:1px;height:34px;
-    background:linear-gradient(180deg,rgba(212,165,116,.7),transparent);
+    background:linear-gradient(180deg,rgba(78,205,196,.7),transparent);
     animation:drop 2s ease-in-out infinite;
   }
   @keyframes drop{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -143,7 +143,7 @@
     font-size:0.82rem;letter-spacing:0.22em;
     color:#4e4e59;white-space:nowrap;padding:0 26px;
   }
-  .marquee-track em{font-style:normal;color:#d4a574;padding:0 8px}
+  .marquee-track em{font-style:normal;color:#4ecdc4;padding:0 8px}
   @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   /* ===== 分类 bento ===== */
@@ -160,7 +160,7 @@
     background:#141418;
     transition:border-color .35s;
   }
-  .b-card:hover{border-color:rgba(212,165,116,.55)}
+  .b-card:hover{border-color:rgba(78,205,196,.55)}
   .b-card .img{
     position:absolute;inset:0;
     transition:transform .8s cubic-bezier(.22,.8,.3,1);
@@ -175,7 +175,7 @@
     position:absolute;top:10px;right:18px;
     font-size:3.2rem;font-weight:800;line-height:1;
     color:transparent;
-    -webkit-text-stroke:1px rgba(212,165,116,.4);
+    -webkit-text-stroke:1px rgba(78,205,196,.4);
     letter-spacing:-0.02em;
   }
   .b-card .txt{
@@ -193,7 +193,7 @@
     opacity:.85;
   }
   .b-card:hover .go{
-    background:#d4a574;border-color:#d4a574;color:#0b0b0d;
+    background:#4ecdc4;border-color:#4ecdc4;color:#0b0b0d;
     transform:rotate(45deg);opacity:1;
   }
   .b-card.wide{grid-column:1/-1}
@@ -219,7 +219,7 @@
     font-size:0.88rem;color:#7a7a85;
     transition:border-color .2s,color .2s;
   }
-  .footer .contact-row a:hover{border-color:rgba(212,165,116,.45);color:#d4a574}
+  .footer .contact-row a:hover{border-color:rgba(78,205,196,.45);color:#4ecdc4}
   .footer .ending{color:#5a5a65;font-size:0.85rem;margin-top:24px}
 
   /* ===== 渐显 ===== */
@@ -344,7 +344,7 @@
     <a href="mailto:1559322152@qq.com">✉ 1559322152@qq.com</a>
     <span>微信：goblin013013</span>
     <span>♪ 抖音：34897829451</span>
-    <a href="resume.pdf" download style="border-color:rgba(212,165,116,.35);color:#d4a574">↓ 下载简历</a>
+    <a href="resume.pdf" download style="border-color:rgba(78,205,196,.35);color:#4ecdc4">↓ 下载简历</a>
   </div>
   <p class="ending">随时期待与您沟通，感谢浏览。</p>
 </footer>
