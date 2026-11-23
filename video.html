@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="游戏原画 / 动效设计 / 游戏UI设计 / 技术美术 — 个人作品集">
+<title>动态设计 — Lin 的作品集</title>
+<style>
+
+  /* ===== Reset & Base ===== */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;font-size:16px}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+    background:#0b0b0d;
+    color:#c8c8cf;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img,video,iframe{display:block;max-width:100%;border:none}
+
+  /* ===== Typography ===== */
+  h1{font-size:clamp(2.4rem,5vw,3.6rem);font-weight:700;letter-spacing:-0.02em}
+  h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:600;letter-spacing:-0.01em}
+  h3{font-size:1.1rem;font-weight:600;color:#e8e8ef}
+  .accent{color:#d4a574}
+
+  /* ===== Layout ===== */
+  .section{padding:80px 24px;max-width:1080px;margin:0 auto}
+  .section-header{margin-bottom:48px}
+  .section-header .tag{
+    display:inline-block;
+    font-size:0.75rem;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:#d4a574;
+    border:1px solid rgba(212,165,116,.35);
+    border-radius:4px;
+    padding:4px 12px;
+    margin-bottom:16px;
+  }
+  .section-header h2{margin-bottom:8px}
+  .section-header .sub{color:#7a7a85;font-size:0.95rem}
+
+  /* ===== Header ===== */
+  .hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:80px 24px;
+    max-width:1080px;margin:0 auto;
+  }
+  .hero h1{margin-bottom:8px}
+  .hero .title{
+    font-size:1.2rem;
+    color:#d4a574;
+    margin-bottom:6px;
+  }
+  .hero .meta{
+    display:flex;flex-wrap:wrap;gap:16px;
+    font-size:0.9rem;color:#7a7a85;
+    margin-top:24px;
+  }
+  .hero .meta a{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:8px 16px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:6px;
+    transition:border-color .2s,background .2s;
+  }
+  .hero .meta a:hover{border-color:rgba(212,165,116,.4);background:rgba(212,165,116,.06)}
+  .hero .resume-btn{
+    background:rgba(212,165,116,.12);
+    border-color:rgba(212,165,116,.3);
+    color:#d4a574;
+  }
+  .scroll-hint{
+    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+    color:#4a4a55;font-size:0.75rem;
+    animation:bounce 2s infinite;
+  }
+  @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+  /* ===== UI Design Section ===== */
+  .design-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+  }
+  .design-card{
+    border-radius:10px;
+    overflow:hidden;
+    background:#141418;
+    border:1px solid rgba(255,255,255,.06);
+    transition:border-color .3s;
+  }
+  .design-card:hover{border-color:rgba(255,255,255,.12)}
+  .design-card.full{grid-column:1/-1}
+  .design-card .media{
+    aspect-ratio:16/10;
+    background:#1a1a1f;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+  }
+  .design-card .media .placeholder{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#3a3a45;
+    gap:8px;
+  }
+  .design-card .media .placeholder svg{width:48px;height:48px;opacity:.3}
+  .design-card .media img,
+  .design-card .media video,
+  .design-card .media iframe{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  }
+  .design-card .info{padding:20px}
+  .design-card .info .badge{
+    display:inline-block;
+    font-size:0.7rem;font-weight:600;
+    padding:2px 8px;border-radius:3px;
+    margin-bottom:8px;
+    background:rgba(212,165,116,.15);
+    color:#d4a574;
+  }
+  .design-card .info h3{margin-bottom:4px}
+  .design-card .info p{font-size:0.9rem;color:#7a7a85}
+  .design-card .info .tools{
+    margin-top:8px;font-size:0.78rem;color:#5a5a65;
+  }
+
+  /* ===== In-Unity highlight ===== */
+  .unity-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:0.75rem;
+    background:rgba(76,175,80,.15);
+    color:#66bb6a;
+    padding:6px 14px;
+    border-radius:20px;
+    margin-top:12px;
+  }
+  .unity-badge::before{
+    content:"";
+    width:8px;height:8px;
+    background:#66bb6a;
+    border-radius:50%;
+  }
+
+  /* ===== Video section ===== */
+  .video-wrapper{
+    aspect-ratio:16/9;
+    background:#1a1a1f;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .video-wrapper iframe{width:100%;height:100%}
+
+  .video-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+  }
+
+  /* ===== Model viewer ===== */
+  .model-wrapper{
+    aspect-ratio:16/9;
+    border-radius:10px;
+    overflow:hidden;
+    background:#1a1a1f;
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .model-wrapper model-viewer{width:100%;height:100%;display:block}
+  .model-wrapper iframe{width:100%;height:100%}
+
+  /* ===== Horizontal scroll gallery ===== */
+  .hscroll{
+    display:flex;gap:16px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:8px;
+    scrollbar-width:thin;
+    scrollbar-color:rgba(255,255,255,.1) transparent;
+  }
+  .hscroll::-webkit-scrollbar{height:4px}
+  .hscroll::-webkit-scrollbar-track{background:transparent}
+  .hscroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+  .hscroll-item{
+    flex:0 0 auto;
+    width:260px;
+    scroll-snap-align:start;
+    border-radius:8px;
+    overflow:hidden;
+    background:#141418;
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .hscroll-item .art-img{
+    aspect-ratio:16/10;
+    background:#1a1a1f;
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+    color:#3a3a45;
+    overflow:hidden;
+  }
+  .hscroll-item .art-img img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  }
+  .hscroll-item .art-caption{
+    padding:12px 16px;
+    font-size:0.82rem;color:#7a7a85;
+    line-height:1.5;
+  }
+  .hscroll-item .art-caption strong{color:#c8c8cf}
+  .hscroll-item .art-tags{
+    display:flex;gap:6px;flex-wrap:wrap;
+    padding:0 16px 12px;
+  }
+  .hscroll-item .art-tags span{
+    font-size:0.68rem;
+    padding:2px 8px;
+    border-radius:3px;
+    background:rgba(212,165,116,.1);
+    color:#d4a574;
+  }
+
+  /* ===== Process steps ===== */
+  .process-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+  }
+  .process-step{
+    border-radius:8px;
+    overflow:hidden;
+    background:#141418;
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .process-step .step-img{
+    aspect-ratio:4/3;
+    background:#1a1a1f;
+    display:flex;align-items:center;justify-content:center;
+    color:#3a3a45;
+    position:relative;
+    overflow:hidden;
+  }
+  .process-step .step-img img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  }
+  .process-step .step-label{
+    text-align:center;
+    padding:8px;
+    font-size:0.75rem;
+    color:#6a6a75;
+  }
+
+  /* ===== Subsection header ===== */
+  .subsec-header{
+    display:flex;align-items:baseline;gap:12px;
+    margin-bottom:16px;
+  }
+  .subsec-header h3{margin-bottom:0}
+  .subsec-header .subsec-tag{
+    font-size:0.72rem;color:#7a7a85;
+  }
+
+  /* ===== Art grid ===== */
+  .art-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  .art-item{
+    aspect-ratio:4/5;
+    border-radius:8px;
+    overflow:hidden;
+    background:#141418;
+    border:1px solid rgba(255,255,255,.06);
+    position:relative;
+  }
+  .art-item .placeholder{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    color:#4a4a55;
+    font-size:0.85rem;
+    flex-direction:column;gap:8px;
+  }
+  .art-item img{
+    position:absolute;inset:0;
+    width:100%;height:100%;object-fit:cover;
+  }
+
+  /* ===== Footer ===== */
+  .footer{
+    text-align:center;
+    padding:60px 24px;
+    border-top:1px solid rgba(255,255,255,.05);
+  }
+  .footer .contact-row{
+    display:flex;justify-content:center;gap:16px;flex-wrap:wrap;
+    margin-bottom:12px;
+  }
+  .footer .contact-row a{
+    padding:10px 20px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:6px;
+    transition:border-color .2s,background .2s;
+  }
+  .footer .contact-row a:hover{border-color:rgba(212,165,116,.4);background:rgba(212,165,116,.06)}
+  .footer .ending{color:#5a5a65;font-size:0.85rem;margin-top:24px}
+
+  /* ===== Divider ===== */
+  .divider{
+    width:60px;height:1px;
+    background:rgba(255,255,255,.1);
+    margin:0 auto;
+  }
+
+  /* ===== Uniform grid image ===== */
+  .ugrid{position:relative;border-radius:6px;overflow:hidden;background:#1a1a1f;border:1px solid rgba(255,255,255,.06)}
+  .ugrid::before{content:'';display:block;padding-bottom:62.5%}
+  .ugrid.ar-1-1::before{padding-bottom:100%}
+  .ugrid.ar-16-9::before{padding-bottom:56.25%}
+  .ugrid.ar-3-1::before{padding-bottom:33.33%}
+  .ugrid.ar-2-1::before{padding-bottom:50%}
+  .ugrid.ar-28-10::before{padding-bottom:35.71%}
+  .ugrid.ar-9-16::before{padding-bottom:177.78%}
+  .ugrid.ar-9-16 img{object-fit:contain}
+  .ugrid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.g{display:grid;gap:8px;padding:8px}
+.g.no-pad{padding:0}
+.g.gap6{gap:6px}
+.g.gap16{gap:16px}
+.g.pad12{padding:12px}
+.g.g2{grid-template-columns:1fr 1fr}
+.g.g3{grid-template-columns:repeat(3,1fr)}
+.g.g4{grid-template-columns:repeat(4,1fr)}
+.g.g12{grid-template-columns:1fr 2fr}
+.g.g211{grid-template-columns:2fr 1fr 1fr}
+.g.align-center{align-items:center}
+.g.align-center-content{align-content:center}
+.g.align-stretch{align-items:stretch}
+
+  /* ===== Compare (before/after) ===== */
+  .compare-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+  .compare-pane{
+    aspect-ratio:16/10;
+    background:#1a1a1f;
+    border-radius:6px;
+    overflow:hidden;
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .compare-pane .label{
+    position:absolute;top:10px;left:10px;
+    font-size:0.7rem;font-weight:600;
+    padding:3px 10px;
+    border-radius:3px;
+    background:rgba(0,0,0,.6);
+    color:#c8c8cf;
+    z-index:2;
+  }
+  .compare-pane .label.after{
+    background:rgba(212,165,116,.25);
+    color:#d4a574;
+  }
+  .compare-pane .placeholder{
+    color:#3a3a45;
+    font-size:0.85rem;
+  }
+  .compare-pane img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  }
+
+  /* ===== Responsive ===== */
+  @media(max-width:768px){
+    .design-grid,.video-grid,.art-grid,.compare-row,.process-row{grid-template-columns:1fr}
+    .hscroll-item{width:200px}
+    .hero h1{font-size:2rem}
+    .section{padding:48px 16px}
+    .hero{padding:48px 16px}
+    .scroll-hint{display:none}
+    .g.g2,.g.g3,.g.g12,.g.g211{grid-template-columns:1fr}
+    .g.g4{grid-template-columns:repeat(2,1fr)}
+    .meta{flex-wrap:wrap;gap:10px}
+  }
+
+  /* ===== Scroll fade-in ===== */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .6s ease,transform .6s ease;
+  }
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* ===== Top nav ===== */
+  .topnav{
+    position:sticky;top:0;z-index:20;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:12px 24px;
+    background:rgba(11,11,13,.92);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .topnav .back{font-weight:600;font-size:0.95rem;color:#e8e8ef;white-space:nowrap}
+  .topnav-links{display:flex;gap:2px;flex-wrap:wrap;justify-content:flex-end}
+  .topnav-links a{font-size:0.82rem;color:#7a7a85;padding:6px 12px;border-radius:6px;border:1px solid transparent}
+  .topnav-links a:hover{color:#d4a574}
+  .topnav-links a.active{color:#d4a574;border-color:rgba(212,165,116,.35);background:rgba(212,165,116,.08)}
+  @media(max-width:768px){
+    .topnav{padding:10px 16px}
+    .topnav-links a{padding:5px 9px}
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a class="back" href="index.html">← Lin 的作品集</a>
+  <div class="topnav-links"><a href="art.html">原画</a><a href="ui.html">UI 设计</a><a href="video.html" class="active">动效</a><a href="3d.html">3D</a><a href="unity.html">Unity</a></div>
+</nav>
+
+<!-- ========== 3. 动态设计 ========== -->
+<section class="section reveal" id="video">
+  <div class="section-header">
+    <span class="tag">03 · Video</span>
+    <h2>动态设计</h2>
+    <p class="sub">界面动效与动态图形，理解游戏节奏，懂得玩家爽点</p>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:32px">
+
+    <!-- 三消界面动效 -->
+    <div class="design-card" style="margin-top:16px">
+      <div class="g g4">
+        <div class="ugrid ar-1-1">
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (单格消除).mp4" data-poster="assets/video/posters/三消界面动效已上线项目碎梦迷失 (单格消除).mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+        </div>
+        <div class="ugrid ar-1-1">
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (线性消除).mp4" data-poster="assets/video/posters/三消界面动效已上线项目碎梦迷失 (线性消除).mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+        </div>
+        <div class="ugrid ar-1-1">
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (区域消除).mp4" data-poster="assets/video/posters/三消界面动效已上线项目碎梦迷失 (区域消除).mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+        </div>
+        <div class="ugrid ar-1-1">
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (颜色消除).mp4" data-poster="assets/video/posters/三消界面动效已上线项目碎梦迷失 (颜色消除).mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+        </div>
+        <div class="ugrid ar-1-1">
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (正反馈（good）).mp4" data-poster="assets/video/posters/三消界面动效已上线项目碎梦迷失 (正反馈（good）).mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+        </div>
+        <div class="ugrid ar-1-1">
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (正反馈（amazing）).mp4" data-poster="assets/video/posters/三消界面动效已上线项目碎梦迷失 (正反馈（amazing）).mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+        </div>
+        <div class="ugrid ar-1-1">
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (正反馈（unbelievable）).mp4" data-poster="assets/video/posters/三消界面动效已上线项目碎梦迷失 (正反馈（unbelievable）).mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+        </div>
+        <div class="ugrid ar-1-1">
+          <video data-src="assets/video/三消界面动效已上线项目碎梦迷失 (过场动画).mp4" data-poster="assets/video/posters/三消界面动效已上线项目碎梦迷失 (过场动画).mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+        </div>
+      </div>
+      <div class="info">
+        <span class="badge">已上线项目</span>
+        <h3>三消界面动效 — 碎梦迷失</h3>
+        <p>已上线三消游戏《碎梦迷失》的界面动效制作：消除反馈、连击正反馈与过场动画。</p>
+        <p class="tools">工具：After Effects</p>
+      </div>
+    </div>
+
+    <!-- 碎梦入场、投流与过场 -->
+    <div class="design-card">
+      <div class="g g3">
+        <div class="ugrid ar-9-16">
+          <video data-src="assets/video/碎梦入场视频.mp4" data-poster="assets/video/posters/碎梦入场视频.mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+        </div>
+        <div class="ugrid ar-9-16">
+          <video data-src="assets/video/碎梦投流.mp4" data-poster="assets/video/posters/碎梦投流.mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+        </div>
+        <div class="ugrid ar-9-16">
+          <video data-src="assets/video/碎梦过场.mp4" data-poster="assets/video/posters/碎梦过场.mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+        </div>
+      </div>
+      <div class="info">
+        <span class="badge">投流素材</span>
+        <h3>碎梦迷失 — 入场、投流视频与过场动画</h3>
+        <p>游戏入场视频、投放视频与过场动画制作。</p>
+        <p class="tools">工具：After Effects</p>
+      </div>
+    </div>
+
+    <!-- 2D 动效与角色武器动画 -->
+    <div class="design-card">
+      <div class="g g12 align-center">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div class="ugrid ar-3-1">
+            <video data-src="assets/video/菜菜武器鞭子一级.mp4" data-poster="assets/video/posters/菜菜武器鞭子一级.mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+          </div>
+          <div class="ugrid ar-3-1">
+            <video data-src="assets/video/菜菜武器鞭子二级.mp4" data-poster="assets/video/posters/菜菜武器鞭子二级.mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center">
+          <div style="width:300px;max-width:100%">
+            <div class="ugrid ar-1-1">
+              <video data-src="assets/video/2d动效-走路.mp4" data-poster="assets/video/posters/2d动效-走路.mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+            </div>
+          </div>
+          <div style="width:300px;max-width:100%">
+            <div class="ugrid ar-9-16">
+              <video data-src="assets/video/2d动效-药瓶武器.mp4" data-poster="assets/video/posters/2d动效-药瓶武器.mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <span class="badge">2D 动效</span>
+        <h3>2D 动效 — 走路、道具与角色武器动画</h3>
+        <p>角色走路循环、武器道具动效与角色武器鞭子两级动画。</p>
+        <p class="tools">工具：After Effects</p>
+      </div>
+    </div>
+
+    <!-- 动态名片 -->
+    <div class="design-card">
+      <div class="ugrid ar-16-9" style="border:none">
+        <video data-src="assets/video/动态名片.mp4" data-poster="assets/video/posters/动态名片.mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+      </div>
+      <div class="info">
+        <span class="badge">动态名片</span>
+        <h3>动态名片</h3>
+        <p>个人动态名片设计，循环播放的名片动效展示。</p>
+        <p class="tools">工具：After Effects</p>
+      </div>
+    </div>
+
+    <!-- 漫剧片段 -->
+    <div class="g g2 gap16 no-pad">
+      <div class="design-card">
+        <div class="ugrid ar-1-1" style="border:none">
+          <video data-src="assets/video/《奇门风水大天师》.mp4" data-poster="assets/video/posters/《奇门风水大天师》.mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0b0b0d"></video>
+        </div>
+        <div class="info">
+          <span class="badge">漫剧片段</span>
+          <h3>《奇门风水大天师》</h3>
+          <p>漫剧片段制作，点击播放。</p>
+          <p class="tools">工具：AI</p>
+        </div>
+      </div>
+      <div class="design-card">
+        <div class="ugrid ar-1-1" style="border:none">
+          <video data-src="assets/video/《拥有透视当天》.mp4" data-poster="assets/video/posters/《拥有透视当天》.mp4.jpg" muted loop playsinline data-lazy autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0b0b0d"></video>
+        </div>
+        <div class="info">
+          <span class="badge">漫剧片段</span>
+          <h3>《拥有透视当天》</h3>
+          <p>漫剧片段制作，点击播放。</p>
+          <p class="tools">工具：AI</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 70年校庆AE -->
+    <div class="design-card">
+      <div class="video-wrapper" style="border-radius:0;border:none">
+        <video data-src="assets/video/用ae做的70年校庆的动态图形.mp4" data-poster="assets/video/posters/用ae做的70年校庆的动态图形.mp4.jpg"
+          muted
+          loop
+          playsinline
+          preload="none"
+          data-lazy autoplay style="width:100%;height:100%;object-fit:contain;background:#0b0b0d">
+        </video>
+      </div>
+      <div class="info">
+        <span class="badge">动态图形</span>
+        <h3>70 年校庆动态图形</h3>
+        <p>使用 After Effects 制作的校庆动态图形设计。</p>
+        <p class="tools">工具：After Effects</p>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<div class="divider"></div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="contact-row">
+    <a href="mailto:1559322152@qq.com">✉ 1559322152@qq.com</a>
+    <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid rgba(255,255,255,.08);border-radius:6px"> 微信：goblin013013</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid rgba(255,255,255,.08);border-radius:6px;font-size:0.9rem;color:#7a7a85">♪ 抖音：34897829451</span>
+    <a href="resume.pdf" download style="background:rgba(212,165,116,.12);border-color:rgba(212,165,116,.3);color:#d4a574">↓ 下载简历</a>
+  </div>
+  <p class="ending">随时期待与您沟通，感谢浏览。</p>
+</footer>
+
+
+<!-- ========== Scroll Reveal ========== -->
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  function show(el){ el.classList.add('visible') }
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ show(e.target) }
+      });
+    },{threshold:0});
+    els.forEach(function(el){ observer.observe(el) });
+    setTimeout(function(){ els.forEach(show) }, 3000);
+  } else {
+    els.forEach(show);
+  }
+})();
+</script>
+
+<!-- ========== Lazy Video Playback ========== -->
+<script>
+(function(){
+  var vids = document.querySelectorAll('video[data-lazy]');
+  function loadV(v){
+    if(!v.src){
+      var d = v.getAttribute('data-src');
+      if(d){ var p = v.getAttribute('data-poster'); if(p){ v.poster = p; } v.src = d; v.load(); }
+    }
+  }
+  function playV(v){
+    var p = v.play();
+    if(p && p.catch){ p.catch(function(){}) }
+  }
+  function pauseV(v){
+    try{ v.pause() }catch(e){}
+  }
+  function start(v){ loadV(v); playV(v) }
+  if('IntersectionObserver' in window){
+    var vio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ start(e.target) } else { pauseV(e.target) }
+      });
+    },{rootMargin:'300px'});
+    vids.forEach(function(v){ vio.observe(v) });
+  } else {
+    vids.forEach(start);
+  }
+  function kick(){
+    vids.forEach(function(v){
+      var r = v.getBoundingClientRect();
+      if(r.top < innerHeight + 400 && r.bottom > -400){ start(v) }
+    });
+  }
+  ['touchstart','touchend','scroll','click'].forEach(function(ev){
+    window.addEventListener(ev, kick, {passive:true, capture:true});
+  });
+  setTimeout(kick, 5000);
+})();
+</script>
+
+
+</body>
+</html>
